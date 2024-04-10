@@ -5,7 +5,7 @@ from scipy.stats import expon
 
 def save_to(directory: str, extension: str):
     # Possible values of lambda for the distribution
-    lambda_values = [0.5, 1, 2]
+    lambda_values = [1, 0.5, 2]
     # Possible values for the distribution
     x = np.linspace(0, 5, 1000)
 

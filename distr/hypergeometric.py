@@ -4,9 +4,9 @@ from scipy.stats import hypergeom
 
 
 def save_to(directory: str, extension: str):
-    inputs = [(20, 7, 12), (20, 7, 5)]
+    inputs = [(50, 12, 10), (50, 35, 10)]
     # Possible outcomes for a Hypergeometric distributed variable
-    outcomes = np.arange(0, 8)
+    outcomes = np.arange(0, 10)
     width = 0.5
 
     # Creating the figure and the axis

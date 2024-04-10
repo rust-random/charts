@@ -4,16 +4,20 @@ from scipy.stats import beta
 
 
 def save_to(directory: str, extension: str):
-    inputs = [(1, 1, 0), (2, 2, 0), (4, 4, 0), (2, 3, 0), (3, 2, 0)]
+    def y(x, min_value, mode, max_value, shape):
+        a = 1 + shape * (mode - min_value) / (max_value - min_value)
+        b = 1 + shape * (max_value - mode) / (max_value - min_value)
+        return beta.pdf(x, a, b, loc=min_value, scale=max_value - min_value)
+    inputs = [(0, 1, 2, 4)]
     # Possible values for the distribution
-    x = np.linspace(0, 1, 1000)
+    x = np.linspace(0, 100, 1000)
 
     # Creating the figure and the axis
     fig, ax = plt.subplots()
 
     # Plotting the PDF for each value of a, b, and c
-    for a, b, c in inputs:
-        ax.plot(x, beta.pdf(x, a, b, loc=c), label=f'a = {a}, b = {b}, c = {c}')
+    for min, mode, max, shape in inputs:
+        ax.plot(x, y(x, min, max, mode, shape), label=f'a = {min}, b = {mode}, c = {max}, shape = {shape}')
 
     # Adding title and labels
     ax.set_title('Pert distribution')

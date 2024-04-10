@@ -4,12 +4,12 @@ from scipy.stats import norminvgauss
 
 
 def save_to(directory: str, extension: str):
-    inputs = [(1, 1, 0, 1), (1, 1, 0, 2), (1, 1, -1, 1), (1, 1, 1, 1)]
+    inputs = [(1, 0, 0, 1), (3, 0, 0, 1), (1, 0.9, 0, 1), (1, 0, -1, 1), (1, 0, 0, 3)]
     # Possible values for the distribution
     x = np.linspace(-5, 5, 1000)
 
     # Creating the figure and the axis
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(8, 5))
 
     # Plotting the PDF for the Normal Inverse Gaussian distribution
     for alpha, beta, mu, delta in inputs:

@@ -6,7 +6,7 @@ from scipy.stats import pareto
 def save_to(directory: str, extension: str):
     inputs = [1, 2, 3, 4]
     # Possible values for the distribution
-    x = np.linspace(0, 5, 1000)
+    x = np.linspace(0, 3, 1000)
 
     # Creating the figure and the axis
     fig, ax = plt.subplots()
