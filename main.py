@@ -1,5 +1,5 @@
 import os
-from distr import (
+from distributions import (
     beta,
     binomial,
     cauchy,
@@ -36,7 +36,7 @@ from distr import (
 
 
 if __name__ == "__main__":
-    out = "diagrams"
+    out = "charts"
     ext = "svg"
     if not os.path.exists(out):
         os.makedirs(out)
