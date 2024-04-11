@@ -49,7 +49,7 @@ if __name__ == "__main__":
         # exponential,
         # exponential_exp1,
         # fisher_f,
-        # frechet,
+        frechet,
         # gamma,
         # geometric,
         # gumbel,
@@ -70,7 +70,7 @@ if __name__ == "__main__":
         # unit_circle,
         # unit_disc,
         # unit_sphere,
-        weibull,
+        # weibull,
         # zeta,
         # zipf,
     ):
