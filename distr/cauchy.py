@@ -9,7 +9,7 @@ def save_to(directory: str, extension: str):
     # Creating the figure and the axis
     fig, ax = plt.subplots()
 
-    inputs = [(0, 0.5), (0, 1), (0, 2), (-2, 1)]
+    inputs = [(0, 1), (0, 0.5), (0, 2), (-2, 1)]
 
     # Plotting the PDF for the Cauchy distribution
     for x0, gamma in inputs:
@@ -18,7 +18,7 @@ def save_to(directory: str, extension: str):
     # Adding title and labels
     ax.set_title('Cauchy distribution')
     ax.set_xlabel('x')
-    ax.set_ylabel('P(x)')
+    ax.set_ylabel('Probability density')
 
     # Adding a legend
     ax.legend()

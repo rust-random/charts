@@ -5,7 +5,7 @@ from scipy.stats import t
 
 def save_to(directory: str, extension: str):
     # Degrees of freedom for the distribution
-    df_values = [1, 2, 5, np.inf]
+    df_values = [0.1, 0.5, 1, 2, 5, np.inf]
     # Possible values for the distribution
     x = np.linspace(-5, 5, 1000)
 

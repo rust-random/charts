@@ -23,7 +23,7 @@ def save_to(directory: str, extension: str):
 
     # Adding title and labels
     ax.set_title('F-distribution')
-    ax.set_xlabel('F statistic')
+    ax.set_xlabel('F-statistic')
     ax.set_ylabel('Probability density')
 
     # Adding a legend

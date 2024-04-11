@@ -59,7 +59,7 @@ if __name__ == "__main__":
         # normal,
         # normal_inverse_gaussian,
         # pareto,
-        pert,
+        # pert,
         # poisson,
         # skew_normal,
         # standard_geometric,
@@ -70,7 +70,7 @@ if __name__ == "__main__":
         # unit_circle,
         # unit_disc,
         # unit_sphere,
-        # weibull,
+        weibull,
         # zeta,
         # zipf,
     ):

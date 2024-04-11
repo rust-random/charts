@@ -4,7 +4,7 @@ from scipy.stats import norm
 
 
 def save_to(directory: str, extension: str):
-    inputs = [(0, 0.5), (0, 1), (0, 2), (-2, 1)]
+    inputs = [(0, 1), (0, 0.5), (0, 2), (-2, 1)]
     # Possible values for the distribution
     x = np.linspace(-5, 5, 1000)
 
