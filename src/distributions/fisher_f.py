@@ -10,7 +10,7 @@ def save_to(directory: str, extension: str):
         return y
 
     # Degrees of freedom for the distribution
-    d1_d2 = [(1, 1), (2, 1), (5, 2), (10, 1), (100, 100)]
+    d1_d2 = [(1, 1), (2, 1), (3, 1), (10, 1), (10, 10), (100, 100)]
     # Possible values for the distribution
     x = np.linspace(0, 5, 1000)
 

@@ -18,7 +18,7 @@ def save_to(directory: str, extension: str):
 
     # Adding title and labels
     ax.set_title('Hypergeometric distribution')
-    ax.set_xlabel('Number of successes in the sample')
+    ax.set_xlabel('k (number of successes)')
     ax.set_ylabel('Probability')
     ax.set_xticks(outcomes)  # set the ticks to be the outcome values
 
