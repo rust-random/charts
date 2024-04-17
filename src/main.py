@@ -47,7 +47,7 @@ if __name__ == "__main__":
         # dirichlet,
         # exponential,
         # exponential_exp1,
-        fisher_f,
+        # fisher_f,
         # frechet,
         # gamma,
         # geometric,
@@ -70,7 +70,7 @@ if __name__ == "__main__":
         # unit_disc,
         # unit_sphere,
         # weibull,
-        # zeta,
-        # zipf,
+        zeta,
+        zipf,
     ):
         distr.save_to(out, ext)

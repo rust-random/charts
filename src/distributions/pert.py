@@ -8,24 +8,28 @@ def save_to(directory: str, extension: str):
         a = 1 + shape * (mode - min_value) / (max_value - min_value)
         b = 1 + shape * (max_value - mode) / (max_value - min_value)
         return beta.pdf(x, a, b, loc=min_value, scale=max_value - min_value)
-    inputs = [(0, 1, 2, 4)]
-    # Possible values for the distribution
-    x = np.linspace(0, 100, 1000)
+
+    inputs = [(-1, 0, 1, 4), (-1, 0, 1, 1), (-1, 0, 1, 8), (-1, 0.5, 1, 4)]
+    # Adjusting the range of x values to be more meaningful for the PERT distribution
+    x = np.linspace(-1.5, 1.5, 1000)  # max_value in inputs is 2, hence 3 is a reasonable upper bound
 
     # Creating the figure and the axis
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(10, 5))
 
-    # Plotting the PDF for each value of a, b, and c
-    for min, mode, max, shape in inputs:
-        ax.plot(x, y(x, min, max, mode, shape), label=f'a = {min}, b = {mode}, c = {max}, shape = {shape}')
+    # Plotting the PDF for each value of min_value, mode, max_value, and shape
+    for min_value, mode, max_value, shape in inputs:
+        ax.plot(x, y(x, min_value, mode, max_value, shape),
+                label=f'min = {min_value}, mode = {mode}, max = {max_value}, shape = {shape}')
 
     # Adding title and labels
-    ax.set_title('Pert distribution')
+    ax.set_title('PERT Distribution')
     ax.set_xlabel('x')
     ax.set_ylabel('Probability density')
 
     # Adding a legend
-    ax.legend()
+    box = ax.get_position()
+    ax.set_position([box.x0, box.y0, box.width * 0.6, box.height])
+    ax.legend(loc='upper left', bbox_to_anchor=(1, 0.6))
 
     plt.savefig(f"{directory}/pert.{extension}")
     plt.close()

@@ -1,29 +1,26 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.stats import zipf
+from scipy.stats import zipfian
 
 
 def save_to(directory: str, extension: str):
-    # Possible values of a for the distribution
-    a_values = [1.5, 2, 3]
-    # Possible outcomes for a Zipf distributed variable
-    outcomes = np.arange(1, 11)
+    inputs = [(2, 10), (1, 10), (0, 10)]  # Different values of s and n
+    outcomes = np.arange(1, 12)  # Outcomes from 1 to 10
 
-    # Creating the figure and the axis
+    # Creating the figure
     fig, ax = plt.subplots()
+    width = 0.2  # Bar width
 
-    # Plotting the PMF for each value of a
-    for i, a in enumerate(a_values):
-        ax.bar(outcomes + i * 0.2 - 0.1, zipf.pmf(outcomes, a), width=0.2, label=f'a = {a}')
+    # Plotting the Zipf Distribution for each value of s
+    for i, (s, n) in enumerate(inputs):
+        ax.bar(outcomes + i * width - width / 2, zipfian.pmf(outcomes, s, n), width=width, label=f's = {s}, n = {n}')
 
-    # Adding title and labels
-    ax.set_title('Zipf distribution')
+    ax.set_title('Zipf Distribution')
     ax.set_xlabel('Outcome')
     ax.set_ylabel('Probability')
-    ax.set_xticks(outcomes)  # set the ticks to be the outcome values
-
-    # Adding a legend
+    ax.set_xticks(outcomes)  # Adjusting x-ticks to center
     ax.legend()
 
+    # Save the plot to a file
     plt.savefig(f"{directory}/zipf.{extension}")
     plt.close()

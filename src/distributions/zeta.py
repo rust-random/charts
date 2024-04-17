@@ -4,26 +4,23 @@ from scipy.stats import zipf
 
 
 def save_to(directory: str, extension: str):
-    # Possible values of s for the distribution
-    s_values = [1.5, 2, 3]
-    # Possible outcomes for a Zeta distributed variable
-    outcomes = np.arange(1, 11)
+    inputs = [3, 2, 1.5, 1.1]  # Different values of s and n
+    outcomes = np.arange(1, 11)  # Outcomes from 1 to 10
 
-    # Creating the figure and the axis
+    # Creating the figure
     fig, ax = plt.subplots()
+    width = 0.2  # Bar width
 
-    # Plotting the PMF for each value of s
-    for i, s in enumerate(s_values):
-        ax.bar(outcomes + i * 0.2 - 0.1, zipf.pmf(outcomes, s), width=0.2, label=f's = {s}')
+    # Plotting the Zipf Distribution for each value of s
+    for i, s in enumerate(inputs):
+        ax.bar(outcomes + i * width - width / 2, zipf.pmf(outcomes, s), width=width, label=f's = {s}')
 
-    # Adding title and labels
-    ax.set_title('Zeta distribution')
+    ax.set_title('Zipf Distribution')
     ax.set_xlabel('Outcome')
     ax.set_ylabel('Probability')
-    ax.set_xticks(outcomes)  # set the ticks to be the outcome values
-
-    # Adding a legend
+    ax.set_xticks(outcomes)  # Adjusting x-ticks to center
     ax.legend()
 
+    # Save the plot to a file
     plt.savefig(f"{directory}/zeta.{extension}")
     plt.close()
