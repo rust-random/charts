@@ -4,7 +4,7 @@ from scipy.stats import norminvgauss
 
 
 def save_to(directory: str, extension: str):
-    inputs = [(1, 0, 0, 1), (3, 0, 0, 1), (1, 0.9, 0, 1), (1, 0, -1, 1), (1, 0, 0, 3)]
+    inputs = [(1, 0), (3, 0), (0.1, 0), (1, -0.99), (1, 0.99)]
     # Possible values for the distribution
     x = np.linspace(-5, 5, 1000)
 
@@ -12,8 +12,8 @@ def save_to(directory: str, extension: str):
     fig, ax = plt.subplots(figsize=(8, 5))
 
     # Plotting the PDF for the Normal Inverse Gaussian distribution
-    for alpha, beta, mu, delta in inputs:
-        ax.plot(x, norminvgauss.pdf(x, alpha, beta, mu, delta), label=f'α = {alpha}, β = {beta}, μ = {mu}, δ = {delta}')
+    for alpha, beta in inputs:
+        ax.plot(x, norminvgauss.pdf(x, alpha, beta, 0, 1), label=f'α = {alpha}, β = {beta}')
 
     # Adding title and labels
     ax.set_title('Normal Inverse Gaussian distribution')

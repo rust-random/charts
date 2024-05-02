@@ -10,10 +10,12 @@ def save_to(directory: str, extension: str):
 
     # Creating the figure and the axis
     fig, ax = plt.subplots()
+    colors = ["blue", "red", "green", "blue", "red", "green"]
+    alphas = [1.0, 1.0, 1.0, 0.6, 0.6, 0.6]
 
     # Plotting the PDF for each value of alpha and beta
-    for k, theta in inputs:
-        ax.plot(x, gamma.pdf(x, k, scale=theta), label=f'k = {k}, θ = {theta}')
+    for i, (k, theta) in enumerate(inputs):
+        ax.plot(x, gamma.pdf(x, k, scale=theta), label=f'k = {k}, θ = {theta}', color=colors[i], alpha=alphas[i])
 
     # Adding title and labels
     ax.set_title('Gamma distribution')

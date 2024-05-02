@@ -19,7 +19,7 @@ def save_to(directory: str, extension: str):
 
     # Create a plot
     fig, ax = plt.subplots(figsize=(8, 8))
-    ax.plot(x, y, color='b', alpha=0.6)
+    ax.fill(x, y, color='b', alpha=0.6)
 
     # Scaling the axes
     ax.set_xlim([-1, 1])
@@ -29,7 +29,7 @@ def save_to(directory: str, extension: str):
     # Labels and title
     ax.set_xlabel('X')
     ax.set_ylabel('Y')
-    ax.set_title('Unit Disc (outline)')
+    ax.set_title('Unit Disc')
 
     plt.tight_layout()
 

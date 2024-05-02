@@ -38,7 +38,7 @@ def save_to(directory: str, extension: str):
     ax.set_xlabel('X')
     ax.set_ylabel('Y')
     ax.set_zlabel('Z')
-    ax.set_title('Unit Sphere (wireframe)')
+    ax.set_title('Unit Sphere (shell)')
 
     # Save the figure
     plt.savefig(f"{directory}/unit_sphere.{extension}")
