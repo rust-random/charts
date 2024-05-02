@@ -54,7 +54,7 @@ def save_to(directory: str, _: str):
     for ax, alphas in zip(axes.flatten(), inputs):
         draw_pdf_contours(ax, alphas)
 
-    plt.suptitle("Dirichlet Distribution", fontsize=12)
+    plt.suptitle("Dirichlet distribution", fontsize=12)
 
     # Save the figure
     plt.tight_layout()
