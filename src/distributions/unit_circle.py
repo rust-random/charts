@@ -30,6 +30,8 @@ def save_to(directory: str, extension: str):
     ax.set_xlabel('X')
     ax.set_ylabel('Y')
     ax.set_title('Unit Circle')
+    ax.grid()
+    ax.margins(x=0, y=0)
 
     plt.tight_layout()
 

@@ -20,6 +20,8 @@ def save_to(directory: str, extension: str):
     ax.set_ylabel('Probability')
     ax.set_xticks(outcomes)  # Adjusting x-ticks to center
     ax.legend()
+    ax.grid()
+    ax.margins(x=0, y=0)
 
     # Save the plot to a file
     plt.savefig(f"{directory}/zeta.{extension}")

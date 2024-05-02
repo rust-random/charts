@@ -22,6 +22,8 @@ def save_to(directory: str, extension: str):
 
     # Adding a legend
     ax.legend()
+    ax.grid()
+    ax.margins(x=0, y=0)
 
     plt.savefig(f"{directory}/skew_normal.{extension}")
     plt.close()
