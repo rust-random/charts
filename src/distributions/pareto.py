@@ -4,7 +4,7 @@ from scipy.stats import pareto
 
 
 def save_to(directory: str, extension: str):
-    inputs = [1, 2, 3]
+    inputs = [(1, 1), (1, 2), (1, 3), (2, 1)]
     # Possible values for the distribution
     x = np.linspace(0, 3, 1000)
 
@@ -12,8 +12,8 @@ def save_to(directory: str, extension: str):
     fig, ax = plt.subplots()
 
     # Plotting the PDF for each value of alpha
-    for alpha in inputs:
-        ax.plot(x, pareto.pdf(x, alpha), label=f'α = {alpha}')
+    for scale, shape in inputs:
+        ax.plot(x, pareto.pdf(x, shape, scale=scale), label=f'x$_{{m}}$ = {scale}, α = {shape}')
 
     # Adding title and labels
     ax.set_title('Pareto distribution')
