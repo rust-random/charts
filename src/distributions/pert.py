@@ -11,7 +11,7 @@ def save_to(directory: str, extension: str):
 
     inputs = [(-1, 0, 1, 4), (-1, 0, 1, 1), (-1, 0, 1, 8), (-1, 0.5, 1, 4)]
     # Adjusting the range of x values to be more meaningful for the PERT distribution
-    x = np.linspace(-1.5, 1.5, 1000)  # max_value in inputs is 2, hence 3 is a reasonable upper bound
+    x = np.linspace(-1, 1, 1000)  # max_value in inputs is 2, hence 3 is a reasonable upper bound
 
     # Creating the figure and the axis
     fig, ax = plt.subplots(figsize=(10, 5))
