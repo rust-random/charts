@@ -6,7 +6,7 @@ from scipy.stats import f
 def save_to(directory: str, extension: str):
     def y(x, dfn, dfd):
         y = f.pdf(x, dfn, dfd)
-        y[y > 2.1] = np.nan
+        y[y > 2.3] = np.nan
         return y
 
     # Degrees of freedom for the distribution

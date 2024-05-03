@@ -39,8 +39,6 @@ def save_to(directory: str, _: str):
         ax.set_xlim(0, 1)
         ax.set_ylim(0, np.sqrt(0.75))
         ax.axis('on')
-        # ax.set_xlabel('Component 2')
-        # ax.set_ylabel('Component 3')
         ax.set_title(f"α = {alphas}", fontsize=10)
 
         return contour

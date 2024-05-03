@@ -6,7 +6,7 @@ from scipy.stats import chi2
 def save_to(directory: str, extension: str):
     def y(x, df):
         y = chi2.pdf(x, df)
-        y[y > 1.0] = np.nan
+        y[y > 1.05] = np.nan
         return y
     # Degrees of freedom for the distribution
     df_values = [1, 2, 3, 5, 9]

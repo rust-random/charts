@@ -42,6 +42,8 @@ def save_to(directory: str, extension: str):
     ax.set_zlabel('Z')
     ax.set_title('Unit Ball (solid)')
     ax.margins(x=0, y=0)
+    ymin, ymax = ax.get_ylim()
+    ax.set_ylim(ymin, ymax * 1.05)
 
     # Save the figure
     plt.savefig(f"{directory}/unit_ball.{extension}")

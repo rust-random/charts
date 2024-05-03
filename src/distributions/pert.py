@@ -32,6 +32,8 @@ def save_to(directory: str, extension: str):
     ax.legend(loc='upper left', bbox_to_anchor=(1, 0.6))
     ax.grid()
     ax.margins(x=0, y=0)
+    ymin, ymax = ax.get_ylim()
+    ax.set_ylim(ymin, ymax * 1.05)
 
     plt.savefig(f"{directory}/pert.{extension}")
     plt.close()

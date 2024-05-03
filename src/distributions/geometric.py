@@ -15,7 +15,7 @@ def save_to(directory: str, extension: str):
 
     # Plotting the PMF for each value of p
     for i, p in enumerate(p_values):
-        ax.bar(outcomes + i * width - width / 2, geom.pmf(outcomes, p), width=width, label=f'p = {p}')
+        ax.bar(outcomes + i * width - width, geom.pmf(outcomes, p), width=width, label=f'p = {p}')
 
     # Adding title and labels
     ax.set_title('Geometric distribution')
@@ -27,6 +27,8 @@ def save_to(directory: str, extension: str):
     ax.legend()
     ax.grid()
     ax.margins(x=0, y=0)
+    ymin, ymax = ax.get_ylim()
+    ax.set_ylim(ymin, ymax * 1.05)
 
     plt.savefig(f"{directory}/geometric.{extension}")
     plt.close()

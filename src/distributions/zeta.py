@@ -13,15 +13,17 @@ def save_to(directory: str, extension: str):
 
     # Plotting the Zipf Distribution for each value of s
     for i, s in enumerate(inputs):
-        ax.bar(outcomes + i * width - width / 2, zipf.pmf(outcomes, s), width=width, label=f's = {s}')
+        ax.bar(outcomes + i * width - width * 3 / 2, zipf.pmf(outcomes, s), width=width, label=f's = {s}')
 
-    ax.set_title('Zipf Distribution')
+    ax.set_title('Zeta Distribution')
     ax.set_xlabel('Outcome')
     ax.set_ylabel('Probability')
     ax.set_xticks(outcomes)  # Adjusting x-ticks to center
     ax.legend()
     ax.grid()
     ax.margins(x=0, y=0)
+    ymin, ymax = ax.get_ylim()
+    ax.set_ylim(ymin, ymax * 1.05)
 
     # Save the plot to a file
     plt.savefig(f"{directory}/zeta.{extension}")

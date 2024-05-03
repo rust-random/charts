@@ -6,7 +6,7 @@ from scipy.stats import hypergeom
 def save_to(directory: str, extension: str):
     inputs = [(50, 12, 10), (50, 35, 10)]
     # Possible outcomes for a Hypergeometric distributed variable
-    outcomes = np.arange(0, 10)
+    outcomes = np.arange(0, 11)
     width = 0.5
 
     # Creating the figure and the axis
@@ -26,6 +26,8 @@ def save_to(directory: str, extension: str):
     ax.legend()
     ax.grid()
     ax.margins(x=0, y=0)
+    ymin, ymax = ax.get_ylim()
+    ax.set_ylim(ymin, ymax * 1.05)
 
     plt.savefig(f"{directory}/hypergeometric.{extension}")
     plt.close()

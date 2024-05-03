@@ -32,6 +32,8 @@ def save_to(directory: str, extension: str):
     ax.set_title('Unit Disc')
     ax.grid()
     ax.margins(x=0, y=0)
+    ymin, ymax = ax.get_ylim()
+    ax.set_ylim(ymin, ymax * 1.05)
 
     plt.tight_layout()
 

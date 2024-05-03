@@ -13,7 +13,7 @@ def save_to(directory: str, extension: str):
 
     # Plotting the Zipf Distribution for each value of s
     for i, (s, n) in enumerate(inputs):
-        ax.bar(outcomes + i * width - width / 2, zipfian.pmf(outcomes, s, n), width=width, label=f's = {s}, n = {n}')
+        ax.bar(outcomes + i * width - width, zipfian.pmf(outcomes, s, n), width=width, label=f's = {s}, n = {n}')
 
     ax.set_title('Zipf Distribution')
     ax.set_xlabel('Outcome')
@@ -22,6 +22,8 @@ def save_to(directory: str, extension: str):
     ax.legend()
     ax.grid()
     ax.margins(x=0, y=0)
+    ymin, ymax = ax.get_ylim()
+    ax.set_ylim(ymin, ymax * 1.05)
 
     # Save the plot to a file
     plt.savefig(f"{directory}/zipf.{extension}")
