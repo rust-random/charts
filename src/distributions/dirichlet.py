@@ -72,5 +72,5 @@ def save_to(directory: str, _: str):
     # Adding the main title and colorbar
     ternary.plt.suptitle('Dirichlet Distribution', fontsize=16)
 
-    ternary.plt.savefig(f"{directory}/dirichlet.{extension}")
+    ternary.plt.savefig(f"{directory}/dirichlet.{extension}", bbox_inches='tight', pad_inches=0.5)
     plt.close()
