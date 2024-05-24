@@ -29,7 +29,7 @@ def save_to(directory: str, extension: str):
     # Adding a legend
     box = ax.get_position()
     ax.set_position([box.x0, box.y0, box.width * 0.6, box.height])
-    ax.legend(loc='upper left', bbox_to_anchor=(1, 0.6))
+    ax.legend(loc='upper left', bbox_to_anchor=(1, 1))
     ax.grid()
     ax.margins(x=0, y=0)
     ymin, ymax = ax.get_ylim()

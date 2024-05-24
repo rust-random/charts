@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.tri as tri
 from math import gamma
-from matplotlib import ticker
+import ternary
 
 
 # Code source: https://blog.bogatron.net/blog/2014/02/02/visualizing-dirichlet-distributions/
@@ -29,19 +29,34 @@ def save_to(directory: str, _: str):
         coords = np.array([tri_area(xy, p) for p in pairs]) / AREA
         return np.clip(coords, tol, 1.0 - tol)
 
-    def draw_pdf_contours(ax, dist, alphas, nlevels=200, subdiv=8):
+    def draw_pdf_contours(ax, alphas, nlevels=200, subdiv=8):
         refiner = tri.UniformTriRefiner(triangle)
         trimesh = refiner.refine_triangulation(subdiv=subdiv)
-        pvals = [dist.pdf(xy2bc(xy)) for xy in zip(trimesh.x, trimesh.y)]
+        pvals = [Dirichlet(alphas).pdf(xy2bc(xy)) for xy in zip(trimesh.x, trimesh.y)]
 
         contour = ax.tricontourf(trimesh, pvals, nlevels, cmap='plasma')
-        ax.axis('equal')
-        ax.set_xlim(0, 1)
-        ax.set_ylim(0, np.sqrt(0.75))
-        ax.axis('on')
-        ax.set_title(f"α = {alphas}", fontsize=10)
+        ternary.plt.colorbar(contour, ax=ax, orientation='vertical', fraction=0.05, pad=0.05)
 
-        return contour
+        ax.axis('equal')
+        ax.spines['top'].set_visible(False)
+        ax.spines['right'].set_visible(False)
+        ax.spines['bottom'].set_visible(False)
+        ax.spines['left'].set_visible(False)
+
+        tax = ternary.TernaryAxesSubplot(ax=ax, scale=1.0)
+
+        tax.boundary(linewidth=1.0)
+
+        tax.ticks(axis='lbr', linewidth=1, multiple=0.2, tick_formats="%.1f", offset=0.02)
+
+        fontsize = 13
+        tax.set_title(f"α = {alphas}", fontsize=fontsize, pad=20)
+        tax.right_axis_label("$x_3$", fontsize=fontsize, offset=0.15)
+        tax.left_axis_label("$x_1$", fontsize=fontsize, offset=0.15)
+        tax.bottom_axis_label("$x_2$", fontsize=fontsize)
+        tax._redraw_labels()  # Won't do this automatically because of the way we are saving the plot
+
+        tax.clear_matplotlib_ticks()
 
     inputs = [
         [1.5, 1.5, 1.5],
@@ -51,17 +66,11 @@ def save_to(directory: str, _: str):
     ]
 
     fig, axes = plt.subplots(2, 2, figsize=(12, 10))
-    contours = []
     for ax, alphas in zip(axes.flatten(), inputs):
-        contour = draw_pdf_contours(ax, Dirichlet(alphas), alphas)
-        contours.append(contour)
+        draw_pdf_contours(ax, alphas)
 
     # Adding the main title and colorbar
-    plt.suptitle('Dirichlet Distribution', fontsize=16)
-    cbar = fig.colorbar(contours[0], ax=axes.ravel().tolist(), orientation='horizontal', pad=0.75)
-    cbar.set_label('Probability Density')
-    cbar.ax.xaxis.set_major_locator(ticker.MaxNLocator(nbins=5))  # Set number of ticks on colorbar
+    ternary.plt.suptitle('Dirichlet Distribution', fontsize=16)
 
-    plt.subplots_adjust(top=0.90, bottom=0.25)  # Adjust the subplots to fit the title and colorbar
-    plt.savefig(f"{directory}/dirichlet.{extension}")
+    ternary.plt.savefig(f"{directory}/dirichlet.{extension}")
     plt.close()
