@@ -13,7 +13,7 @@ def save_to(directory: str, extension: str):
 
     # Plotting the PDF for each value of alpha
     for scale, shape in inputs:
-        ax.plot(x, pareto.pdf(x, shape, scale=scale), label=f'x$_{{m}}$ = {scale}, α = {shape}')
+        ax.plot(x, pareto.pdf(x, shape, scale=scale), label=f'α = {shape}, x$_{{m}}$ = {scale}')
 
     # Adding title and labels
     ax.set_title('Pareto distribution')

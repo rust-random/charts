@@ -12,8 +12,8 @@ def save_to(directory: str, extension: str):
     width = 0.2  # Bar width
 
     # Plotting the Zipf Distribution for each value of s
-    for i, s in enumerate(inputs):
-        ax.bar(outcomes + i * width - width * 3 / 2, zipf.pmf(outcomes, s), width=width, label=f's = {s}')
+    for i, a in enumerate(inputs):
+        ax.bar(outcomes + i * width - width * 3 / 2, zipf.pmf(outcomes, a), width=width, label=f'a = {a}')
 
     ax.set_title('Zeta Distribution')
     ax.set_xlabel('Outcome')
