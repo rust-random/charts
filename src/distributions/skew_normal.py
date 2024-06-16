@@ -4,7 +4,7 @@ from scipy.stats import skewnorm
 
 
 def save_to(directory: str, extension: str):
-    inputs = [-5, -2, 0, 2, 5]
+    inputs = [(0, 1, -5), (0, 1, -2), (0, 1, 0), (0, 1, 2), (0, 1, 5)]
     # Possible values for the distribution
     x = np.linspace(-5, 5, 1000)
 
@@ -12,8 +12,8 @@ def save_to(directory: str, extension: str):
     fig, ax = plt.subplots()
 
     # Plotting the PDF for each value of alpha
-    for alpha in inputs:
-        ax.plot(x, skewnorm.pdf(x, alpha), label=f'α = {alpha}')
+    for loc, scale, shape in inputs:
+        ax.plot(x, skewnorm.pdf(x, shape, loc, scale), label=f'shape = {shape}')
 
     # Adding title and labels
     ax.set_title('Skew Normal distribution')
