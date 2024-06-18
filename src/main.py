@@ -1,5 +1,6 @@
 import os
 from distributions import (
+    bernoulli,
     beta,
     binomial,
     cauchy,
@@ -40,6 +41,7 @@ if __name__ == "__main__":
     if not os.path.exists(out):
         os.makedirs(out)
     for distr in (
+        bernoulli,
         beta,
         binomial,
         cauchy,
