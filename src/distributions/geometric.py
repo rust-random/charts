@@ -21,7 +21,7 @@ def save_to(directory: str, extension: str):
 
     # Adding title and labels
     ax.set_title('Geometric distribution')
-    ax.set_xlabel('Number of failures until first success')
+    ax.set_xlabel('Number of failures before first success')
     ax.set_ylabel('Probability')
     ax.set_xticks(outcomes)  # set the ticks to be the outcome values
 
