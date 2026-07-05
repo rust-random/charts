@@ -14,7 +14,8 @@ def save_to(directory: str, extension: str):
 
     # Plotting the PDF for the Inverse Gaussian distribution
     for mu, lambda_ in inputs:
-        ax.plot(x, invgauss.pdf(x, mu, scale=lambda_), label=f'μ = {mu}, λ = {lambda_}')
+        mu_2 = mu / lambda_ # Scipy's interpretation of mu is different than rand_distr's (check https://en.wikipedia.org/wiki/Inverse_Gaussian_distribution)
+        ax.plot(x, invgauss.pdf(x, mu_2, scale=lambda_), label=f'μ = {mu}, λ = {lambda_}')
 
     # Adding title and labels
     ax.set_title('Inverse Gaussian distribution')
